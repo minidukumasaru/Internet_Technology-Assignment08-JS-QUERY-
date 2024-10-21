@@ -4,56 +4,115 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-       section:nth-child(2){
+        main{
+            background-color: black;
+            width: 2000px;
+            height: 900px;
+        }
+       main>section:nth-child(2){
            display: flex;
            column-gap: 20px;
        }
-       section:nth-child(2)>div{
+        main>section:nth-child(2)>div{
            position: relative;
            width: 100px;
            height: 50px;
            border-radius: 5px;
-           border: 1px solid black;
+           border: 2px solid white;
           left: 600px;
            top: 300px;
        }
-       section:nth-child(2)>div:nth-child(1){
+        main>section:nth-child(2)>div:nth-child(1){
            top: 200px;
        }
-       section:nth-child(2)>div:nth-child(6){
+        main>section:nth-child(2)>div:nth-child(6){
            top: 400px;
        }
-       section:nth-child(1){
+        main>section:nth-child(1){
            display: flow;
        }
-       section:nth-child(1)>div{
+        main>section:nth-child(1)>div{
            position: relative;
            width: 720px;
            height: 2px;
-           background-color: black;
+           background-color: white;
            left: 600px;
            top: 280px;
        }
-       section:nth-child(1)>div:nth-child(1){
+        main>section:nth-child(1)>div:nth-child(1){
            top: 380px;
+       }
+        main>div{
+           position: relative;
+           left: 600px;
+           top: 450px;
+       }
+       #startBtn{
+           width: 100px;
+           height: 50px;
+           border-radius: 20px;
+           background-color: black;
+           border: 2px solid white;
+           color: white;
+           font-size: 20px;
+       }
+       #stopBtn{
+           width: 100px;
+           height: 50px;
+           border-radius: 20px;
+           background-color: black;
+           border: 2px solid white;
+           color: white;
+           font-size: 20px;
        }
     </style>
 </head>
 <body>
-<section>
-    <div></div>
-    <div></div>
-</section>
-<section>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</section>
+<main>
+    <section>
+        <div></div>
+        <div></div>
+    </section>
+    <section>
+        <div id="1" style="background-color: red"></div>
+        <div id="2" style="background-color: green"></div>
+        <div id="3" style="background-color: blue"></div>
+        <div id="4" style="background-color: yellow"></div>
+        <div id="5" style="background-color: cyan"></div>
+        <div id="6" style="background-color: purple"></div>
+    </section>
+    <div >
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+    </div>
+</main>
 <script>
+    let arr = ['red','green','blue','yellow','cyan','purple'];
+    let intervalId;
 
+    function startColorChange() {
+        if (!intervalId) {
+            intervalId = setInterval(() => {
+                let last_value = arr.pop();
+                arr.unshift(last_value);
+
+                document.getElementById("1").style.backgroundColor = arr[0];
+                document.getElementById("2").style.backgroundColor = arr[1];
+                document.getElementById("3").style.backgroundColor = arr[2];
+                document.getElementById("4").style.backgroundColor = arr[3];
+                document.getElementById("5").style.backgroundColor = arr[4];
+                document.getElementById("6").style.backgroundColor = arr[5];
+            }, 1000);
+        }
+    }
+
+    function stopColorChange() {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+    document.getElementById('startBtn').addEventListener('click', startColorChange);
+    document.getElementById('stopBtn').addEventListener('click', stopColorChange);
 </script>
+
 </body>
 </html>
