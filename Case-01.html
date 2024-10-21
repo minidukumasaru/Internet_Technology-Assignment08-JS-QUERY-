@@ -3,8 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        section{
+            background: white;
+        }
+        section>section:nth-child(1){
+            display: flex;
+            column-gap: 250px;
+
+        }
+        section>section:nth-child(1)>div{
+            position: relative;
+           left: 150px;
+           top: 600px;
+            font-size: 20px;
+        }
+        section>section:nth-child(2){
+            display: flex;
+            column-gap: 50px;
+
+        }
+        section>section:nth-child(2)>div>img{
+            width: 200px;
+            height:200px;
+            margin-top: 500px;
+        }
+        section>section:nth-child(2)>div:nth-child(7)>img{
+            width: 400px;
+            height: 400px;
+            margin-top: 350px;
+            background: #FBBD7A;
+        }
+
+    </style>
 </head>
 <body>
+<section>
+<section>
+    <div>
+        <h1>A</h1>
+    </div>
+    <div>
+        <h1>B</h1>
+    </div>
+    <div>
+        <h1>C</h1>
+    </div>
+    <div>
+        <h1>D</h1>
+    </div>
+    <div>
+        <h1>E</h1>
+    </div>
+    <div>
+        <h1>F</h1>
+    </div>
+</section>
+<section>
+    <div> <img src="Asserts/Dog_walks_man.gif"></div>
+    <div> <img src="Asserts/Dog_walks_man.gif"></div>
+    <div> <img src="Asserts/Dog_walks_man.gif"></div>
+    <div> <img src="Asserts/Dog_walks_man.gif"></div>
+    <div> <img src="Asserts/Dog_walks_man.gif"></div>
+    <div> <img src="Asserts/Dog_walks_man.gif"></div>
 
+     <div> <img src="Asserts/wooden-dog-house-with-dog-illustration-pets-stock-image_1323048-72819.avif"></div>
+
+
+
+
+
+</section>
+</section>
+
+
+<script>
+    let arr = ["A","B","C","D","E","F"];
+
+    setInterval(() =>{
+        let last_value =arr.pop();
+        arr.unshift(last_value);
+        console.log(arr);
+
+        document.getElementsByTagName("h1")[0].innerText = arr[0];
+        document.getElementsByTagName("h1")[1].innerText = arr[1];
+        document.getElementsByTagName("h1")[2].innerText = arr[2];
+        document.getElementsByTagName("h1")[3].innerText = arr[3];
+        document.getElementsByTagName("h1")[4].innerText = arr[4];
+        document.getElementsByTagName("h1")[5].innerText = arr[5];
+
+    },1000);
+</script>
 </body>
 </html>
