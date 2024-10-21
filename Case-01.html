@@ -16,7 +16,7 @@
             position: relative;
            left: 150px;
            top: 600px;
-            font-size: 20px;
+            font-size: 40px;
         }
         section>section:nth-child(2){
             display: flex;
@@ -33,6 +33,30 @@
             height: 400px;
             margin-top: 350px;
             background: #FBBD7A;
+        }
+        section>div>button{
+            position: relative;
+            left: 150px;
+            top: -550px;
+
+        }
+        #startBtn{
+            width: 100px;
+            height: 50px;
+            border-radius: 20px;
+            background-color: black;
+            border: 5px solid red;
+            color: white;
+            font-size: 20px;
+        }
+        #stopBtn{
+            width: 100px;
+            height: 50px;
+            border-radius: 20px;
+            background-color: black;
+            border: 5px solid red;
+            color: white;
+            font-size: 20px;
         }
 
     </style>
@@ -55,9 +79,6 @@
     <div>
         <h1>E</h1>
     </div>
-    <div>
-        <h1>F</h1>
-    </div>
 </section>
 <section>
     <div> <img src="Asserts/Dog_walks_man.gif"></div>
@@ -74,25 +95,38 @@
 
 
 </section>
+    <div class="buttons">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+    </div>
 </section>
 
 
 <script>
-    let arr = ["A","B","C","D","E","F"];
+    let arr = ["A","B","C","D","E"];
+    let intervalId;
 
-    setInterval(() =>{
-        let last_value =arr.pop();
-        arr.unshift(last_value);
-        console.log(arr);
+    function startRotation() {
+        if (!intervalId) {
+            intervalId = setInterval(() => {
+                let last_value = arr.pop();
+                arr.unshift(last_value);
 
-        document.getElementsByTagName("h1")[0].innerText = arr[0];
-        document.getElementsByTagName("h1")[1].innerText = arr[1];
-        document.getElementsByTagName("h1")[2].innerText = arr[2];
-        document.getElementsByTagName("h1")[3].innerText = arr[3];
-        document.getElementsByTagName("h1")[4].innerText = arr[4];
-        document.getElementsByTagName("h1")[5].innerText = arr[5];
+                document.getElementsByTagName("h1")[0].innerText = arr[0];
+                document.getElementsByTagName("h1")[1].innerText = arr[1];
+                document.getElementsByTagName("h1")[2].innerText = arr[2];
+                document.getElementsByTagName("h1")[3].innerText = arr[3];
+                document.getElementsByTagName("h1")[4].innerText = arr[4];
 
-    },1000);
+            }, 1000);
+        }
+    }
+    function stopRotation() {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+    document.getElementById('startBtn').addEventListener('click', startRotation);
+    document.getElementById('stopBtn').addEventListener('click', stopRotation);
 </script>
 </body>
 </html>
